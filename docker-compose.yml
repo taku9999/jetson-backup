@@ -1,0 +1,20 @@
+version: "2"
+services:
+  ros_melodic:
+    image: l4t-ros:32.5.0-ros_melodic
+    container_name: lidar_ros
+    network_mode: "host"
+    tty: true
+    stdin_open: true
+    volumes:
+      - type: bind
+        source: /home/taku9/docker_ws/data
+        target: /workspace/docker_bind
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
