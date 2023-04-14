@@ -58,8 +58,6 @@ RUN rm -rf /workspace/Livox-SDK/.gitignore
 RUN git config --global user.name taku9999
 RUN git config --global user.email 102945088+taku9999@users.noreply.github.com
 RUN git config --global init.defaultBranch main
-ARG repository="scripts"
-ARG subscriber="point_sub.py"
 
 # LiDAR本体設定ファイル変更（livox_lidar_config.json）
 WORKDIR /workspace/ws_livox/src/livox_ros_driver/config
@@ -73,11 +71,11 @@ WORKDIR /workspace/ws_livox/src/livox_ros_driver/launch
 RUN sed -i '5s/"xfer_format" default="0"/"xfer_format" default="2"/' livox_lidar.launch
 RUN sed -i '8s/"publish_freq" default="10.0"/"publish_freq" default="1"/' livox_lidar.launch
 RUN sed -i '32s/$/\n\n/' livox_lidar.launch
-RUN sed -i '33s/$/\t<node pkg="livox_ros_driver" type="${subscriber}" name="point_sub" output="screen"\/>/' livox_lidar.launch
+RUN sed -i '33s/$/\t<node pkg="livox_ros_driver" type="point_sub.py" name="point_sub" output="screen"\/>/' livox_lidar.launch
 
 # GitHubからコードを引っ張ってくる
 ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" /dev/null
 WORKDIR /workspace/ws_livox/src/livox_ros_driver/
-RUN git clone https://github.com/taku9999/${repository}.git
-WORKDIR /workspace/ws_livox/src/livox_ros_driver/${repository}
-RUN chmod +x ${subscriber}
+RUN git clone https://github.com/taku9999/scripts.git
+WORKDIR /workspace/ws_livox/src/livox_ros_driver/scripts
+RUN chmod +x point_sub.py
