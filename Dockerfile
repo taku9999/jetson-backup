@@ -61,14 +61,14 @@ RUN git config --global init.defaultBranch main
 ARG repository="scripts"
 ARG subscriber="point_sub.py"
 
-# LiDAR本体設定ファイル（livox_lidar_config.json）
+# LiDAR本体設定ファイル変更（livox_lidar_config.json）
 WORKDIR /workspace/ws_livox/src/livox_ros_driver/config
 RUN sed -i '3,11d' livox_lidar_config.json
 RUN sed -i '4s/"broadcast_code": "0TFDG3U99101431"/"broadcast_code": "3JEDJCP00136071"/' livox_lidar_config.json
 RUN sed -i '5s/"enable_connect": false/"enable_connect": true/' livox_lidar_config.json
 RUN sed -i '8s/"imu_rate": 0/"imu_rate": 1/' livox_lidar_config.json
 
-# launchファイル（livox_lidar.launch）
+# launchファイル変更（livox_lidar.launch）
 WORKDIR /workspace/ws_livox/src/livox_ros_driver/launch
 RUN sed -i '5s/"xfer_format" default="0"/"xfer_format" default="2"/' livox_lidar.launch
 RUN sed -i '8s/"publish_freq" default="10.0"/"publish_freq" default="1"/' livox_lidar.launch
