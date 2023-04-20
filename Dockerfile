@@ -73,7 +73,7 @@ RUN sed -i '8s/"publish_freq" default="10.0"/"publish_freq" default="1"/' livox_
 RUN sed -i '32s/$/\n\n/' livox_lidar.launch
 RUN sed -i '33s/$/\t<node pkg="livox_ros_driver" type="point_sub.py" name="point_sub" output="screen"\/>/' livox_lidar.launch
 
-# GitHubからコードを引っ張ってくる
+# GitHubからコードを引っ張ってくる（以下、ビルド毎に強制実行）
 ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" /dev/null
 WORKDIR /workspace/ws_livox/src/livox_ros_driver/
 RUN git clone https://github.com/taku9999/scripts.git

@@ -9,7 +9,10 @@ services:
     volumes:
       - type: bind
         source: /home/taku9/docker_ws/data
-        target: /workspace/docker_bind
+        target: /workspace/docker_bind_Local
+      # - type: bind
+      #   source: /media/taku9/SSD_2TB
+      #   target: /workspace/docker_bind_SSD
     deploy:
       resources:
         reservations:
