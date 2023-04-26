@@ -13,6 +13,9 @@ services:
       # - type: bind
       #   source: /media/taku9/SSD_2TB
       #   target: /workspace/docker_bind_SSD
+      - type: bind
+        source: /run/jtop.sock
+        target: /run/jtop.sock
     deploy:
       resources:
         reservations:

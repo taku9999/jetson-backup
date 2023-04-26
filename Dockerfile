@@ -47,6 +47,7 @@ RUN apt install -y ros-melodic-ros-numpy
 RUN pip3 install rospkg
 RUN pip3 install open3d
 RUN pip3 install pcl
+RUN pip3 install -U jetson-stats
 # =============================================================
 
 # Git連携設定
