@@ -1,7 +1,7 @@
 version: "2"
 services:
   ros_melodic:
-    image: l4t-ros:32.5.0-ros_melodic
+    image: l4t-ros:32.5.0-melodic
     container_name: lidar_ros
     network_mode: "host"
     tty: true
